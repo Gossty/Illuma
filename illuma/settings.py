@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'lLU2MiSX9_KQFHv36ZfF6DOVXlMlQxv-gorB-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['illuma.herokuapp.com','127.0.0.1']
 
 
 # Application definition
