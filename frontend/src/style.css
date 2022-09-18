@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.btn {
+    @apply py-2 px-4 font-semibold rounded-lg shadow-md;
+  }
+  .btn-purple {
+    @apply text-white bg-illuma-600 hover:bg-illuma-700;
+  }
+
+body {
+    margin: 0;
+}
+
+
+@layer base {
+    html {
+      font-family: Lato, sans-serif;
+    }
+  }
+
+.charts-button {
+  background:
+  linear-gradient(336deg, #1f1e25, rgba(0, 0, 0, 0) 200.71%),
+  linear-gradient(217deg, #1db954, rgba(49, 7, 7, 0) 70.71%),
+  linear-gradient(127deg,  #9500ff80, rgba(0,255,0,0) 170.71%);
+}
+
+.search-result {
+  background:
+  linear-gradient(to top, rgb(21 20 25), #1db954, rgb(21 20 25) 300%)
+}
+
+.apexcharts-tooltip {
+  background: rgba(139, 92, 246, 0.6);
+  color: rgb(29, 185, 84);
+}
