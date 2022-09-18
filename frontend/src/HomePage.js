@@ -53,19 +53,12 @@ export default function HomePage(props) {
               Log In To Spotify
           </button>
       </nav>
-      <div className='mx-[25%] mt-[100px]'>
-        <div className='p-3 text-[28px]'>
-          
-          <div className='flex'>
-            <p className='text-violet-500 mr-1'> Illuma </p>
-            <p className='m-0'>- Personalized Statistics for your </p>
-            <p className='text-spotify-400 mx-1'> Spotify </p>
-            <p className='m-0'>account</p> 
-          </div>
+      <div className='text-center mt-[100px]'>
+        <div className='p-3 text-[28px] text-violet-500'>
+            Illuma - Personalized Statistics for your Spotify account
         </div>
-        <div className='text-center p-3 text-[20px]'>Log in to Spotify to view this project</div>
+        <div className='text-center p-3 text-[20px] text-gray-500'>Log in to Spotify to view this project</div>
         <div className='text-center p-3 text-[20px] text-red-600'>To get access to the website, email here sgolzari@ucsd.edu</div>
-
       </div>
     </div>
   )
