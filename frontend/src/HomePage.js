@@ -44,9 +44,9 @@ export default function HomePage(props) {
   }
   
   return (
-    <div className='bg-blakish-500 h-screen font-light'>
-        <nav className='h-14 bg-blakish-600 flex items-center '>
-          <h1 className='ml-2'>
+    <div className='home-page bg-blakish-500 h-screen font-light'>
+        <nav className='h-14  bg-blakish-600 flex items-center'>
+          <h1 className='ml-2 text-violet-500 border-[0.5px] border-violet-500 rounded-xl p-1 px-4'>
               Illuma
           </h1>
           <button className='text-center px-3 py-1 rounded-xl bg-violet-500  ml-auto mr-4' onClick={authenticateSpotify}>
@@ -58,7 +58,7 @@ export default function HomePage(props) {
             Illuma - Personalized Statistics for your Spotify account
         </div>
         <div className='text-center p-3 text-[20px] text-gray-500'>Log in to Spotify to view this project</div>
-        <div className='text-center p-3 text-[20px] text-red-600'>To get access to the website, email here sgolzari@ucsd.edu</div>
+        <div className='text-center p-3 text-[22px] text-red-600 font-bold'>To get access to the website, email here sgolzari@ucsd.edu</div>
       </div>
     </div>
   )

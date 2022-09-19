@@ -22,7 +22,11 @@
     linear-gradient(127deg, #1db954, rgba(0,255,0,0) 70.71%),
     linear-gradient(336deg, rgb(139 92 246), rgba(0, 0, 0, 0) 450.71%);
 }
-
+.home-page {
+    background: linear-gradient(217deg, #1f1e25, rgba(49, 7, 7, 0) 90.71%),
+    linear-gradient(127deg, #1db954, rgba(0,255,0,0) 130.71%),
+    linear-gradient(336deg, #8b5cf6, rgb(0, 0, 0) 100.71%);
+}
 .top-tracks-song:hover {
     background-color: rgba(85, 85, 85, 0.5);
 }
