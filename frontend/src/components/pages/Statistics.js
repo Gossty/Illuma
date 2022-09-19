@@ -136,7 +136,7 @@ function Statistics(props) {
 
 
   return (
-      <div className='h-screen bg-blakish-500 overflow-y-scroll scrollbar-hide font-light'>
+      <div className='h-screen bg-blakish-500 overflow-y-hidden scrollbar-hide font-light'>
         <div className='absolute lg:w-[calc(100vw-15rem)] md:w-[calc(100vw-12rem)] w-[calc(100vw)]
             lg:left-[15rem] md:left-[12rem] h-screen overflow-y-scroll'>
               <div className='bg-blakish-600 mx-4 mt-4 rounded-2xl'>
@@ -159,7 +159,7 @@ function Statistics(props) {
             <div className='flex pb-3 pr-2'>
               <p className='m-2 sm:text-[20px] text-[12px]'> Y axis </p>
                   <select value={yAxis} onChange={handleChangeY} className='text-black rounded-md max-h-[20px] truncate max-w-[120px] mt-3'>
-                    <option defaultValue="acousticness">Acousticness</option>
+                    <option value="acousticness">Acousticness</option>
                     <option value="danceability">Danceability</option>
                     <option value="energy">Energy</option>
                     <option value="instrumentalness">Instrumentalness</option>

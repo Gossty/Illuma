@@ -81,7 +81,7 @@ function Charts(props) {
   useEffect(() => {
   }, [update])
   return (
-    <div className='h-screen bg-blakish-500 overflow-y-scroll scrollbar-hide'>
+    <div className='h-screen bg-blakish-500 overflow-y-hidden scrollbar-hide'>
       <div className='absolute lg:w-[calc(100vw-15rem)] md:w-[calc(100vw-12rem)] w-[calc(100vw)]
       lg:left-[15rem] md:left-[12rem] h-screen overflow-y-scroll'>
           <div className=' pt-5 overflow-auto'>

@@ -70,7 +70,7 @@ function PlaylistPage(props) {
         getPlaylist(playlistId);
     }, [playlistId])
   return (
-      <div className='h-screen bg-blakish-600 overflow-y-scroll scrollbar-hide'>
+      <div className='h-screen bg-blakish-600 overflow-y-hidden scrollbar-hide'>
           <div className='absolute lg:w-[calc(100vw-15rem)] md:w-[calc(100vw-12rem)] w-[calc(100vw)]
                 lg:left-[15rem] md:left-[12rem] h-screen overflow-y-scroll'>
               

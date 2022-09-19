@@ -63,7 +63,7 @@ export default function Dashboard(props) {
 
 
   return (
-    <div className='h-screen bg-blakish-500 overflow-auto'>
+    <div className='h-screen bg-blakish-500 overflow-y-hiddem'>
       <Center recentlyPlayed={recentlyPlayed}
         topTracks={topTracks}
         topArtists={TopArtists}

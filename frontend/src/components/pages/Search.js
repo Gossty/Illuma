@@ -32,7 +32,7 @@ function Search(props) {
         getSearchResult();
     }, [query])
   return (
-    <div className='bg-blakish-500 h-screen overflow-y-scroll scrollbar-hide font-light'>
+    <div className='bg-blakish-500 h-screen overflow-y-hidden scrollbar-hide font-light'>
         <div className=' absolute lg:w-[calc(100vw-15rem)] md:w-[calc(100vw-12rem)] w-[calc(100vw)]
       lg:left-[15rem] md:left-[12rem] h-screen overflow-y-scroll'>
         <div className='mt-5 flex bg-spotify-400 md:mx-10 mx-3 rounded-2xl '>
