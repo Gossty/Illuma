@@ -48,7 +48,7 @@ function Sidebar(props) {
     return (
         <div className="text-gray-500 p-5 text-sm border-r-[0.11px]
          border-r-gray-500 overflow-y-scroll scrollbar-hide h-screen
-         sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex" >
+         sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex font-light" >
             <div className="space-y-4">
 
                 <button className="flex items-center space-x-2 
