@@ -23,6 +23,7 @@ class topTracks(APIView):
             }
             image = item.get('album').get('images')[0].get('url')
             song_id = item.get('id')
+            uri = item.get('uri')
 
             artists_array = item.get('artists')
             song_artists = []
@@ -41,6 +42,7 @@ class topTracks(APIView):
                 'duration': duration,
                 'image': image,
                 'id': song_id,
+                'uri': uri
             }
             songs.append(song)
         return Response(songs, status=status.HTTP_200_OK)

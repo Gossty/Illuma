@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .utils import *
+import json
+import urllib.parse
 
 class getPlaylist(APIView):
     def get(self, request, id,format=None):
@@ -64,3 +66,25 @@ class getPlaylist(APIView):
             'songs': songs
         }
         return Response(playlist, status=status.HTTP_200_OK)
+
+class createPlaylist(APIView):
+    def post(self, request, format=None):
+        host = self.request.session.session_key
+        endpoint = ""
+        user = execute_spotify_api_request(host, endpoint)
+
+        user_id = user.get('id')
+        endpoint = f'users/{user_id}/playlists'
+        data = json.dumps(request.data.get('description'))
+        create_playlist = execute_spotify_api_request_data(host, endpoint, data, post_=True, second_=True)
+
+        playlist_id = create_playlist.get('id')
+        songs = request.data.get('songs')
+        uris = ""
+        for i in range(len(songs)):
+            uris += "," + songs[i].get('uri')
+        uris = uris[1:len(uris)]
+        uris = urllib.parse.quote(uris)
+        endpoint = f'playlists/{playlist_id}/tracks?uris={uris}'
+        add_playlist = execute_spotify_api_request(host, endpoint, post_=True, second_=True)
+        return Response(add_playlist, status=status.HTTP_200_OK)

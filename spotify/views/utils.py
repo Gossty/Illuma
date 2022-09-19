@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from ..models import SpotifyToken, topSongs
 from django.utils import timezone
 from datetime import timedelta
@@ -78,17 +79,41 @@ def execute_spotify_api_request(session_id, endpoint, post_=False, put_=False, s
     tokens = get_user_tokens(session_id)
     headers = {'Content-Type': 'application/json',
                'Authorization': "Bearer " + tokens.access_token}
-    if post_:
-        post(BASE_URL + endpoint, headers=headers)
-    if put_:
-        put(BASE_URL + endpoint, headers=headers)
-        
     if second_:
+        if post_:
+            response = post(BASE_URL2 + endpoint, headers=headers)
+            try:
+                return response.json()
+            except:
+                return {'Error': 'Issue with request'}
+        if put_:
+            response = put(BASE_URL2 + endpoint, headers=headers)
+            try:
+                return response.json()
+            except:
+                return {'Error': 'Issue with request'}
+
         response = get(BASE_URL2 + endpoint, {}, headers=headers)
         try:
             return response.json()
         except:
             return {'Error': 'Issue with request'}
+
+
+    if post_:
+        response = post(BASE_URL + endpoint, headers=headers)
+        try:
+            return response.json()
+        except:
+            return {'Error': 'Issue with request'}
+    if put_:
+        response = put(BASE_URL + endpoint, headers=headers)
+        try:
+            return response.json()
+        except:
+            return {'Error': 'Issue with request'}
+        
+
     
     # else
     response = get(BASE_URL + endpoint, {}, headers=headers)
@@ -102,11 +127,22 @@ def execute_spotify_api_request_data(session_id, endpoint, data, post_=False, pu
     tokens = get_user_tokens(session_id)
     headers = {'Content-Type': "application/json",
                'Authorization' : 'Bearer ' + tokens.access_token}
+    if second_ == True:
+        
+        if post_:
+            response = post(BASE_URL2 + endpoint, headers=headers, data=data)
+        if put_:
+            response = put(BASE_URL2 + endpoint, headers=headers, data=data)
+        try: 
+            return response.json()
+        except ValueError as err:
+            return {"Error" : err}
+
     if post_:
-        post(BASE_URL + endpoint, headers=headers, data=data)
+        response = post(BASE_URL + endpoint, headers=headers, data=data)
     if put_:
         response = put(BASE_URL + endpoint, headers=headers, data=data)
     try:
         return response.json()
     except ValueError as err:
-        return {"Error":f"Issue with request"}
+        return {"Error": err}

@@ -1,6 +1,5 @@
-from email import header
 from re import M
-from urllib import response
+
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from requests import Request, post
@@ -8,7 +7,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from .utils import *
 import os
-import json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,7 +16,7 @@ REDIRECT_URI = os.environ.get('REDIRECT_URI')
 
 class AuthURL(APIView):
     def get(self, request, format=None):
-        scopes = 'user-read-email user-read-private playlist-read-collaborative playlist-read-private user-read-currently-playing user-read-playback-state playlist-modify-private user-library-read user-top-read user-read-recently-played'
+        scopes = 'user-read-email user-read-private playlist-read-collaborative playlist-read-private user-read-currently-playing user-read-playback-state playlist-modify-public playlist-modify-private user-library-read user-top-read user-read-recently-played'
 
         url = Request('GET', 'https://accounts.spotify.com/authorize', params={
             'scope': scopes,

@@ -2,18 +2,27 @@ import React, { useEffect, useState } from 'react'
 import TopArtists from './ChartsPage/TopArtists';
 import Sidebar from '../Sidebar'
 import Tracks from './ChartsPage/Tracks';
+import { Grid, Alert, Slide } from '@mui/material';
 
 function Charts(props) {
 
   const terms = ['short_term', 'medium_term', 'long_term'];
-  const types = ['tracks', 'artists'];
+  const [update, setUpdate] = useState(false);
   const [termState, setTermState] = useState(0);
   const [typeState, setTypeState] = useState(0);
   const [topTracks, setTopTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
+  const [message, setMessage] = useState('');
 
   let topSongCount = 1;
   let topArtistCount = 1;
+  let condition = props.windowDimensions.width > 640 ? 'absolute bottom-0' : 'absolute top-0 w-[90%] m-5'
+
+  let term = "Last 4 Weeks"
+  if (termState === 1)
+    term = "Last 6 Months"
+  else if (termState === 2)
+    term = "All Time"
 
   const styles = {
     backgroundColor: "rgb(76 29 149)"
@@ -34,16 +43,49 @@ function Charts(props) {
     .then((data) => setTopArtists(data))
   }
 
+  function createPlaylist() {
+    let today = new Date();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let term = "for the last 4 weeks"
+    if (termState === 1)
+      term = "for the last 6 months"
+    else if (termState === 2)
+      term = "all time"
+    
+    const playlist = {
+      'description': {
+        'name': `Top Tracks ${term} as of ${date}`,
+        'description': `Your favorite tracks ${term} delivered by Illuma, illuma.herokuapp.com as of ${date} `,
+        'public': false
+      },
+      'songs': topTracks
+    }
+    const requestOptions = {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(playlist)
+    }
+    fetch('/spotify/create-playlist', requestOptions)
+      .then(response => response.json())
+      .then(() => {
+        setUpdate(!update)
+        setMessage("Playlist Was Successfully Created!")
+      })
+  }
+
   useEffect(() => {
     getTopTracks();
     getTopArtists();
   }, [termState, typeState]);
+
+  useEffect(() => {
+  }, [update])
   return (
     <div className='h-screen bg-blakish-500 overflow-y-scroll scrollbar-hide'>
       <div className='absolute lg:w-[calc(100vw-15rem)] md:w-[calc(100vw-12rem)] w-[calc(100vw)]
       lg:left-[15rem] md:left-[12rem] h-screen overflow-y-scroll'>
           <div className=' pt-5 overflow-auto'>
-            <p className='text-3xl p-5 font-bold'>Your Charts</p>
+            <p className='text-3xl sm:p-5 p-5 pt-14 font-bold'>Your Charts</p>
         </div>
 
         <div className='flex p-5 items-center justify-center text-2xl font-light border-1 border-black '>
@@ -62,9 +104,18 @@ function Charts(props) {
           onClick={() => setTermState(2)}>All Time</p>
         </div>
 
-       { typeState === 0 ? <div className='bg-blakish-600 mx-4 mt-4 rounded-2xl'>
+        {typeState === 0 ? <div className='bg-blakish-600 mx-4 mt-4 rounded-2xl'>
+
+          <div className='flex'>
+            <></>
+            <button className='create-playlist text-center font-light ml-auto mr-4 mt-4 rounded-xl px-7 py-2' onClick={createPlaylist}>
+              Create Playlist
+            </button>
+          </div>
+
           <div className='text-3xl p-5 font-bold'>
-              <h1>Top Tracks</h1>
+            <h1>Your Top Tracks</h1>
+            <h2 className='text-xl text-gray-500 mt-3'>{term}</h2>
               { props.windowDimensions.width > 420 ?
               <div className='flex font-light text-gray-500 lg:text-xl md:text-lg text-base mt-5'>
                 <div className='flex w-[320px]'>
@@ -91,7 +142,7 @@ function Charts(props) {
               }
               {props.windowDimensions.width > 420 ? <hr className="border-t-[1px] border-gray-500 mt-2 mb-5 self-center" /> : ""}
             </div>
-
+                
             <div className='overflow-auto'>
             {topTracks.map((track) => (
                   <Tracks key={track.id + "" + topSongCount}
@@ -111,8 +162,12 @@ function Charts(props) {
           </div>
         </div> : ""}
 
-        { typeState === 1 ? <div className='bg-blakish-600 mx-4 mt-4 rounded-2xl min-w-[18rem]'>
-            <h1 className='text-3xl p-5 font-bold'>Top Artists</h1>
+        {typeState === 1 ? <div className='bg-blakish-600 mx-4 mt-4 rounded-2xl min-w-[18rem]'>
+          <div className='text-3xl p-5 font-bold'>
+          <h1 >Your Top Artists</h1>
+          <h2 className='text-xl text-gray-500 mt-3'>{term}</h2>
+          </div>
+          
             <div className='overflow-auto grid md:grid-cols-3 grid-cols-2 min-w-[20rem]'>
             {topArtists.map((artist) => (
               <TopArtists key={artist.id + topArtistCount}
@@ -133,9 +188,22 @@ function Charts(props) {
 
 
       </div>
-
-
-      <Sidebar />
+      <Sidebar update={update} />
+      
+      <div className={condition}>
+      {message.length > 0 ?
+        <Grid>
+          <Slide direction="right" in={message.length > 0} mountOnEnter unmountOnExit>
+            <Alert severity="success"
+              onClose={() => setMessage('')}>
+                  {message}
+            </Alert>
+          </Slide>
+        </Grid>
+        : ""
+      }
+      </div>
+      
     </div>
   )
 }

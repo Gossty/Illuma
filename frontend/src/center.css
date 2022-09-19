@@ -3,7 +3,7 @@
     border-radius: 15px;
     background: linear-gradient(120deg, #1f1e25, rgba(49, 7, 7, 0) 300.71%),
             linear-gradient(250deg, #1db954, rgba(0,255,0,0) 70.71%),
-            linear-gradient(400deg, rgba(149, 0, 255, 0.5), rgba(0, 0, 0, 0) 150.71%);
+            linear-gradient(400deg, rgba(139, 92, 246, 1), rgba(0, 0, 0, 0) 150.71%);
 }
 
 .recently-played-song:hover {
@@ -14,7 +14,13 @@
     border-radius: 15px;
     background: linear-gradient(217deg, #1f1e25, rgba(49, 7, 7, 0) 200.71%),
             linear-gradient(127deg, #1db954, rgba(0,255,0,0) 70.71%),
-            linear-gradient(336deg, rgba(149, 0, 255, 0.5), rgba(0, 0, 0, 0) 70.71%);
+            linear-gradient(336deg, rgba(139, 92, 246, 1), rgba(0, 0, 0, 0) 70.71%);
+}
+
+.create-playlist {
+    background: linear-gradient(217deg, #1f1e25, rgba(49, 7, 7, 0) 100.71%),
+    linear-gradient(127deg, #1db954, rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgb(139 92 246), rgba(0, 0, 0, 0) 450.71%);
 }
 
 .top-tracks-song:hover {
@@ -26,7 +32,7 @@
     background: 
     linear-gradient(336deg, #1f1e25, rgba(0, 0, 0, 0) 200.71%),
     linear-gradient(217deg, #1db954, rgba(49, 7, 7, 0) 70.71%),
-    linear-gradient(127deg,  #9500ff80, rgba(0,255,0,0) 170.71%);
+    linear-gradient(127deg,  rgba(139, 92, 246, 1), rgba(0,255,0,0) 170.71%);
 }
 
 .currently-playing-song:hover {
@@ -38,7 +44,7 @@
     background: 
     linear-gradient(336deg, #1f1e25, rgba(0, 0, 0, 0) 200.71%),
     linear-gradient(217deg, #1db954, rgba(49, 7, 7, 0) 70.71%),
-    linear-gradient(127deg,  #9500ff80, rgba(0,255,0,0) 170.71%);
+    linear-gradient(127deg,  rgba(139, 92, 246, 1), rgba(0,255,0,0) 170.71%);
 }
 
 .top-artists-artist:hover {

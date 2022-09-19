@@ -7,7 +7,7 @@ import {
     ChartSquareBarIcon,
 } from "@heroicons/react/outline";
 
-function Sidebar() {
+function Sidebar(props) {
     const [playlists, setPlaylists] = useState([]);
     let navigate = useNavigate();
 
@@ -44,7 +44,7 @@ function Sidebar() {
     
       useEffect(() => {
         getPlaylists()
-      }, [])
+      }, [props])
     return (
         <div className="text-gray-500 p-5 text-sm border-r-[0.11px]
          border-r-gray-500 overflow-y-scroll scrollbar-hide h-screen

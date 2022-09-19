@@ -29,5 +29,6 @@ urlpatterns = [
     path('check-liked/<str:id>', checkLiked.as_view()),
     path('get-details', getDetails.as_view()),
     path('get-album/<str:id>', getAlbum.as_view()),
-    path('get-playlist/<str:id>', getPlaylist.as_view())
+    path('get-playlist/<str:id>', getPlaylist.as_view()),
+    path('create-playlist', createPlaylist.as_view())
 ]
