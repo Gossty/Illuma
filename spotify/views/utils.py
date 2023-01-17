@@ -7,12 +7,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-# CLIENT_ID = os.getenv('CLIENT_ID')
-# CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-# REDIRECT_URI = os.getenv('REDIRECT_URI')
-CLIENT_ID="c5999130780b416ba46e89c26e802460"
-CLIENT_SECRET="3a9fb567425140bf9af5883fd6ed54af"
-REDIRECT_URI="http://127.0.0.1:8000/spotify/redirect"
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 
 
 BASE_URL = "https://api.spotify.com/v1/me/"
